@@ -5,7 +5,7 @@ const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const entriesother = utils.getEntry('./src/pages/**/index.js');
 const entries = Object.assign({
-  app: './src/main.js'
+  // app: './src/main.js'
 }, entriesother);
 console.log(entries);
 

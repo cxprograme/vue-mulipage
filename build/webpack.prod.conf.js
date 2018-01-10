@@ -126,20 +126,6 @@ const webpackConfig = merge(baseWebpackConfig, {
   ]
 })
 
-for (var pathname in pages) {
-  //配置生成的html文件,定义路径等
-  var conf = {
-    filename: pathname+'.html',
-    template: pages[pathname],
-    inject: true,
-    chunks: [pathname]
-  };
-  if (pathname in module.exports.entry) {
-    conf.chunks = ['manifest', 'vendor', pathname];
-    conf.hash = true;
-  }
-  module.exports.plugins.push(new HtmlWebpackPlugin(conf));
-}
 
 if (config.build.productionGzip) {
   const CompressionWebpackPlugin = require('compression-webpack-plugin')
@@ -165,3 +151,19 @@ if (config.build.bundleAnalyzerReport) {
 }
 
 module.exports = webpackConfig
+
+for (var pathname in pages) {
+  //配置生成的html文件,定义路径等
+  var conf = {
+    filename: pathname+'.html',
+    template: pages[pathname],
+    inject: true,
+    chunks: [pathname]
+  };
+  if (pathname in module.exports.entry) {
+    conf.chunks = ['manifest', 'vendor', pathname];
+    conf.hash = true;
+  }
+  module.exports.plugins.push(new HtmlWebpackPlugin(conf));
+}
+
