@@ -14,13 +14,13 @@ import rating from '@/components/rating/rating';
 Vue.use(VueRouter)
 
 const routes = [
-  // { path: '/home', component: Home },
-  { path: '/cart', component: Cart },
-  // { path: '/explorer', component: Explorer},
-  // { path: '/me', component: Me},
-  { path: '/goods', component: goods },
-  { path: '/seller', component: seller },
-  {path: '/rating', component: rating}
+  { name: 'Home', path: '/home', component: Home },
+  { name: 'Cart', path: '/cart', component: Cart },
+  { name: 'Explorer', path: '/explorer', component: Explorer},
+  { name: 'Me', path: '/me', component: Me},
+  { name: 'Goods',path: '/goods', component: goods },
+  { name: 'Seller', path: '/seller', component: seller },
+  { name: 'Rating', path: '/rating', component: rating}
 ];
 
 // 3. 创建 router 实例，然后传 `routes` 配置
@@ -31,6 +31,6 @@ const router = new VueRouter({
   linkActiveClass: 'active'
 });
 
-router.push('/goods')
+router.push('/home')
 
 export default router;
