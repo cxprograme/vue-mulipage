@@ -6,25 +6,25 @@
         </div>
         <div class="tab border-1px">
           <div class="tab-item">
-              <router-link :to="{name: 'Home'}" tag='ul'>
+              <router-link :to="{name: 'Home'}" tag='ul' @click.native="flushCom">
                 <li><i class="iconfont icon-home"></i></li>
                 <li><span>书城</span></li>
               </router-link>
           </div>
           <div class="tab-item">
-              <router-link :to="{name: 'Explorer'}" tag='ul'>
+              <router-link :to="{name: 'Explorer'}" tag='ul' @click.native="flushCom">
                 <li><i class="iconfont icon-category"></i></li>
                 <li><span>分类</span></li>
               </router-link>
           </div>
           <div class="tab-item">
-              <router-link :to="{name: 'Cart'}" tag='ul'>
+              <router-link :to="{name: 'Cart'}" tag='ul' @click.native="flushCom">
                 <li><i class="iconfont icon-cart"></i></li>
                 <li><span>书架</span></li>
               </router-link>
           </div>
           <div class="tab-item">
-              <router-link :to="{name: 'Me'}" tag='ul'>
+              <router-link :to="{name: 'Me'}" tag='ul' @click.native="flushCom">
                 <li><i class="iconfont icon-me"></i></li>
                 <li><span>我的</span></li>
               </router-link>
@@ -36,7 +36,12 @@
 
 <script>
 export default {
-  name: 'infoone'
+  name: 'infoone',
+  methods:{
+    flushCom:function(){
+            console.log(1111);
+　　　　}
+  }
 }
 </script>
 

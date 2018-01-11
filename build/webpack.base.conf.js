@@ -35,7 +35,7 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json','styl'],
+    extensions: ['.js', '.vue', '.json','.styl'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
@@ -97,3 +97,4 @@ module.exports = {
     child_process: 'empty'
   }
 }
+console.log('modules.export:'+JSON.stringify(module.exports))
