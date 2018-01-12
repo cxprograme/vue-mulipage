@@ -2,11 +2,12 @@
   <div id="infoone">
      <div>
         <div class="content">
-           <router-view></router-view>
+           <router-view :intro='intro'></router-view>
+           <!-- <router-view ></router-view> -->
         </div>
         <div class="tab border-1px">
           <div class="tab-item">
-              <router-link :to="{name: 'Home'}" tag='ul' @click.native="flushCom">
+              <router-link :to="{name: 'Home'}" tag='ul' @click.native="flushCom" >
                 <li><i class="iconfont icon-home"></i></li>
                 <li><span>书城</span></li>
               </router-link>
@@ -34,18 +35,38 @@
   </div>
 </template>
 
-<script>
+<script type='text/javascript'>
+import {fetch} from '@/util/http'
+import home from '@/components/home/Home'
 export default {
   name: 'infoone',
+  data() {
+    return {
+      intro:{}
+    }
+  },
+  components: {
+    home
+  },
+  mounted() {
+    this.getBook();
+  },
   methods:{
     flushCom:function(){
             console.log(1111);
-　　　　}
-  }
+　　　　},
+    getBook: function() {
+      var _this = this;
+      fetch ('/api/intro').then(response => {
+          this.intro = response.data
+      })
+    }
+  },
+
 }
 </script>
 
-<style lang="stylus" type='stylus' rel="stylesheet/stylus">
+<style lang="stylus" type='stylus' rel="stylesheet/stylus" scoped>
 @import url('../../common/stylus/icon.styl')
 @import url('../../common/stylus/common.styl')
 

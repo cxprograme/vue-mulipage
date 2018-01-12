@@ -4,7 +4,7 @@
  * project-name: ${project_base_name}
  */
 <template>
-	<div class="goods">
+	<div class="me">
 		Me info 
 	</div>
 </template>
@@ -12,7 +12,7 @@
 <script>
 
 	export default{
-		name: 'goods'
+		name: 'me'
 	};
 </script>
 

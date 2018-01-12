@@ -4,19 +4,26 @@
  * project-name: ${project_base_name}
  */
 <template>
-	<div class="goods">
-		HOME info 
+	<div class="home">
+		<img :src='intro.image'>
+		<span>作者：{{intro.author}}</span>
+		<span>分类: {{intro.category}}</span>
 	</div>
 </template>
 
 <script>
 
 	export default{
-		name: 'goods'
+		name: 'home',
+		props:{
+			intro:{
+				type: Object
+			}
+		}
 	};
 </script>
 
-<style >
+<style scoped>
 	
 						
 </style>
