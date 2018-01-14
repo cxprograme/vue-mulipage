@@ -69,7 +69,6 @@ export default {
 <style lang="stylus" type='stylus' rel="stylesheet/stylus" scoped>
 @import url('../../common/stylus/icon.styl')
 @import url('../../common/stylus/common.styl')
-
 *
   font-family 'Source Sans Pro', sans-serif;
   font-weight 300;

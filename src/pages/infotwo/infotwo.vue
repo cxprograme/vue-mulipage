@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" type='stylus' rel="stylesheet/stylus">
 @keyframes square{
   0%{
     -webkit-transform: translateY(0);
