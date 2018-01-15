@@ -1,53 +1,146 @@
 <template>
-	<div class="container">
+	<div class="container" >
           <div id="pic">
-            <ul>
+            <ul v-bind:style = 'moveStyle' ref='picCon'>
               <li v-for="(item,index) in imgArry">
               	<img :src="item.src">
               </li>
             </ul>
           </div>
           <div id="btn">
-            <div id="left" class="bt fleft">&lt</div>
-            <div id="right" class="bt fright">&gt</div>
+            <div id="left" class="bt fleft" @click='leftClick'>&lt</div>
+            <div id="right" class="bt fright" @click='rightClick'>&gt</div>
           </div>
           <div id="tab">
             <ul>
-              <li class="on"></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
+             <li v-for = '(item, index) in tabList' :class ="{'on':item.show}" @click='tabClick(index)'>
+             </li>
             </ul>
           </div>
     </div>
 </template>
 <script type="text/javascript">
 import img from '../../../static/json/images.json'
+import {move} from '@/util/move'
 	export default {
 		name: 'banner',
 		data() {
 			return {
 				index: 0,
-				imgArry:img.images
+				imgArry:img.images,
+                initNum:702,
+                moveStyle:{
+                    'marginLeft':'-702px'
+                },
+                tabList:[
+                    {show : true},
+                    {show : false},
+                    {show : false},
+                    {show : false},
+                    {show : false}
+                ],
+                startDate: new Date(),
+                timer: null
+
 			}
 		},
 		created() {
 
 		},
+        mounted: function(){
+            var that = this;
+            that.timer = setInterval(function(){
+                /*var tempDate=new Date();
+                if(tempDate-this.startDate>300){
+                   this.startDate=tempDate;*/
+                  that.index = that.index==that.tabList.length?0:that.index
+                  that.tabList[that.index].show=false;
+                  that.index++;
+             
+                  
+                  var obj = that.$refs.picCon;
+                  
+                  that.changeBanner(that.index, obj);
+                 // }
+              },5000)
+        },
 		methods: {
 			leftClick: function(){
-
+                var tempDate = new  Date();
+                if(tempDate-this.startDate>300){
+                    this.startDate=tempDate;
+                    this.index = this.index==-1?this.tabList.length-1:this.index
+                    this.tabList[this.index].show = false;
+                    this.index--;
+                    var obj = this.$refs.picCon;
+                    this.changeBanner(this.index,obj);
+                }
 			},
 			rightClick: function() {
-
-			},
-			changeBanner: function() {
+                var tempDate = new  Date();
+                if(tempDate-this.startDate>300){
+                    this.startDate=tempDate;
+                    this.index = this.index == this.tabList.length?0:this.index
+                    this.tabList[this.index].show = false;
+                    this.index++;
+                    var obj = this.$refs.picCon;
+                    this.changeBanner(this.index,obj);
+                }
+            },
+			changeBanner: function(index,obj) {
+                var tabList = this.tabList;
+                var now = this.index;
+                var moveStyle = this.moveStyle
+                var index = this.index;
+                var initNum = this.initNum;
+                if (now >= tabList.length){
+                    now = 0;
+                }
+                if (now < 0) {
+                    now = this.tabList.length-1;
+                }
+                tabList[now].show = true;
+                 move(obj,{
+                    'marginLeft':-initNum*(index+1)+"px"
+                  },300,function(){
+                    console.log(index);
+                    if(index==tabList.length){
+                       index=0;
+                       this.index = index;
+                       obj.style.marginLeft= -initNum+'px';
+                    }else if(index==-1){
+                       index=tabList.length-1;
+                       this.index = index;
+                       obj.style.marginLeft=-initNum*(index+1)+"px";
+                    }
+                    }
+                    //this.callMove(index,tabList,initNum,obj)
+                  ,"easeOutStrong");
 
 			},
 			autoPlay: function() {
-
-			}
+                this.timer = setInterval(function(){
+              /*  var tempDate=new Date();
+                if(tempDate-this.startDate>300){*/
+                  // this.startDate=tempDate;
+                  this.tabList[this.index].show=false;
+                  this.index++;
+                // if(index>=$picli.length){
+                //   index=0;
+                // }
+                  this.index==this.tabList.length?0:this.index
+                  var obj = this.$refs.picCon;
+                  
+                  change(this.index, obj);
+                // }
+              },2000)
+			},
+            tabClick:function(index) {
+                var obj = this.$refs.picCon;
+                this.tabList[this.index].show=false;
+                this.index=index;
+                this.changeBanner(index,obj);
+            }
 		}
 	}
 </script>
@@ -57,7 +150,7 @@ import img from '../../../static/json/images.json'
         margin:0
         padding:0
     .container
-        width:520px
+        width:702px
         height: 240px
         position: absolute
         left:50%
@@ -74,9 +167,9 @@ import img from '../../../static/json/images.json'
         #pic ul
             width:1000%
             height:240px
-            margin-left: -520px
+            margin-left: -702px
         #pic ul li
-            width:520px
+            width:702px
             height:240px
             float: left
             list-style: none

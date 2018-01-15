@@ -1,8 +1,8 @@
 /*
 * @Author: adam
 * @Date:   2018-01-13 11:10:45
-* @Last Modified by:   adam
-* @Last Modified time: 2018-01-13 14:20:07
+* @Last Modified by:   cxpro
+* @Last Modified time: 2018-01-15 16:40:18
 * 运动框架
 */
 export function move (obj,mjson,time,callback,cv) {
@@ -10,7 +10,7 @@ export function move (obj,mjson,time,callback,cv) {
 	var startValue={};
 	var endValue={};
 	for(var key in mjson){
-		startValue[key]=parseInt(getStyle(box,key));
+		startValue[key]=parseInt(getStyle(obj,key));
 		endValue[key]=parseInt(mjson[key]);
 	}
 	var startTime=new Date();
