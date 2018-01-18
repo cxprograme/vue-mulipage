@@ -2,7 +2,7 @@
 * @Author: adam
 * @Date:   2018-01-13 11:10:45
 * @Last Modified by:   cxpro
-* @Last Modified time: 2018-01-15 16:40:18
+* @Last Modified time: 2018-01-17 15:02:41
 * 运动框架
 */
 export function move (obj,mjson,time,callback,cv) {
@@ -27,7 +27,7 @@ export function move (obj,mjson,time,callback,cv) {
 			var b=startValue[key];
 			var c=endValue[key]-startValue[key];
 			var left=Tween[cv](t,b,c,d);
-			console.log(left);
+			// console.log(left);
 			obj.style[key]=left+'px';
 		}
 		if(t===d){

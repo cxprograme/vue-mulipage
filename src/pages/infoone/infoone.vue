@@ -1,6 +1,5 @@
 <template>
   <div id="infoone">
-     <div>
         <div class="content">
            <router-view :intro='intro'></router-view>
            <!-- <router-view ></router-view> -->
@@ -31,7 +30,6 @@
               </router-link>
           </div>
         </div>
-    </div>
   </div>
 </template>
 
@@ -74,6 +72,10 @@ export default {
   font-weight 300;
   margin 0
   padding 0
+.content
+  display: inline-block
+  width: auto
+  height: auto
 .tab
   position fixed
   bottom 0px

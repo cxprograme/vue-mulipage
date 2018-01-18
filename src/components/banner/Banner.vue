@@ -1,16 +1,16 @@
 <template>
-	<div class="container" >
+	<div class="container" @mouseover='mouseOver' @mouseleave='mouseLeave'>
           <div id="pic">
             <ul v-bind:style = 'moveStyle' ref='picCon'>
-              <li v-for="(item,index) in imgArry">
-              	<img :src="item.src">
+              <li v-for="(item,index) in imgArry" v-bind:style ="{'background-image':'url('+item.src+')'}">
+              	<!-- <img :src="item.src"> -->
               </li>
             </ul>
           </div>
-          <div id="btn">
+          <!-- <div id="btn">
             <div id="left" class="bt fleft" @click='leftClick'>&lt</div>
             <div id="right" class="bt fright" @click='rightClick'>&gt</div>
-          </div>
+          </div> -->
           <div id="tab">
             <ul>
              <li v-for = '(item, index) in tabList' :class ="{'on':item.show}" @click='tabClick(index)'>
@@ -28,42 +28,42 @@ import {move} from '@/util/move'
 			return {
 				index: 0,
 				imgArry:img.images,
-                initNum:702,
-                moveStyle:{
-                    'marginLeft':'-702px'
-                },
-                tabList:[
-                    {show : true},
-                    {show : false},
-                    {show : false},
-                    {show : false},
-                    {show : false}
-                ],
-                startDate: new Date(),
-                timer: null
+        initNum:375,
+        moveStyle:{
+            'marginLeft':'-375px'
+        },
+        tabList:[
+            {show : true},
+            {show : false},
+            {show : false},
+            {show : false},
+            {show : false}
+        ],
+        startDate: new Date(),
+        timer: null
 
 			}
 		},
 		created() {
 
 		},
-        mounted: function(){
-            var that = this;
-            that.timer = setInterval(function(){
-                /*var tempDate=new Date();
-                if(tempDate-this.startDate>300){
-                   this.startDate=tempDate;*/
-                  that.index = that.index==that.tabList.length?0:that.index
-                  that.tabList[that.index].show=false;
-                  that.index++;
-             
-                  
-                  var obj = that.$refs.picCon;
-                  
-                  that.changeBanner(that.index, obj);
-                 // }
-              },5000)
-        },
+    mounted: function(){
+        var that = this;
+        that.timer = setInterval(function(){
+            var tempDate=new Date();
+            if(tempDate-that.startDate>300){
+              this.startDate=tempDate;
+              that.index = that.index==that.tabList.length?0:that.index
+              that.tabList[that.index].show=false;
+              that.index++;
+         
+              
+              var obj = that.$refs.picCon;
+              
+              that.changeBanner(that.index, obj);
+             }
+          },3000)
+    },
 		methods: {
 			leftClick: function(){
                 var tempDate = new  Date();
@@ -103,7 +103,7 @@ import {move} from '@/util/move'
                  move(obj,{
                     'marginLeft':-initNum*(index+1)+"px"
                   },300,function(){
-                    console.log(index);
+                    // console.log(index);
                     if(index==tabList.length){
                        index=0;
                        this.index = index;
@@ -133,14 +133,34 @@ import {move} from '@/util/move'
                   
                   change(this.index, obj);
                 // }
-              },2000)
+              },3000)
 			},
-            tabClick:function(index) {
-                var obj = this.$refs.picCon;
-                this.tabList[this.index].show=false;
-                this.index=index;
-                this.changeBanner(index,obj);
-            }
+      tabClick:function(index) {
+          var obj = this.$refs.picCon;
+          this.tabList[this.index].show=false;
+          this.index=index;
+          this.changeBanner(index,obj);
+      },
+      mouseOver: function(){
+          clearInterval(this.timer);
+      },
+      mouseLeave: function(){
+          var that = this
+          that.timer = setInterval(function(){
+            var tempDate=new Date();
+            if(tempDate-that.startDate>300){
+              that.startDate=tempDate;
+              that.index = that.index==that.tabList.length?0:that.index
+              that.tabList[that.index].show=false;
+              that.index++;
+         
+              
+              var obj = that.$refs.picCon;
+              
+              that.changeBanner(that.index, obj);
+             }
+          },1000)
+      }
 		}
 	}
 </script>
@@ -150,29 +170,31 @@ import {move} from '@/util/move'
         margin:0
         padding:0
     .container
-        width:702px
-        height: 240px
+        // width:702px
+        width: 100%
+        height: 160px
         position: absolute
-        left:50%
-        top:50%
-        margin-left:-260px
-        margin-top:-140px
+        // left:50%
+        top:0
+        // margin-left:-260px
+        // margin-top:-140px
         overflow: hidden
         &:hover .bt
             display: block
             cursor: pointer
         #pic
             width:1000%
-            height: 240px
+            height: 160px
         #pic ul
             width:1000%
-            height:240px
-            margin-left: -702px
+            height:160px
+            margin-left: -375px
         #pic ul li
-            width:702px
-            height:240px
+            width:375px
+            height:160px
             float: left
             list-style: none
+            background-size:100% 100%
         #btn
             width:100%
             height: 30px
