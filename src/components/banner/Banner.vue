@@ -62,7 +62,7 @@ import {move} from '@/util/move'
               
               that.changeBanner(that.index, obj);
              }
-          },3000)
+          },5000)
     },
 		methods: {
 			leftClick: function(){
@@ -133,7 +133,7 @@ import {move} from '@/util/move'
                   
                   change(this.index, obj);
                 // }
-              },3000)
+              },5000)
 			},
       tabClick:function(index) {
           var obj = this.$refs.picCon;

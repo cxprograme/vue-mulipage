@@ -12,17 +12,21 @@
 		<banner></banner>
 		<div class="section">
 			<div class="book-list">
-				<div class="header">新书上架</div>
-				<div class="more">更多</div>
-			</div>
-			<div class="book-items">
-				<div class="book" v-for='book in booklist'>
-					<div class="cover">
-						<img :src="book.image">
-					</div>
-					<div class="info">
-						<div>作者：{{book.author}}</div>
-						<div>分类: {{book.category}}</div>
+				<div class="heading comlay">
+					<div class="header">新书上架</div>
+					<div class="more">更多</div>
+				</div>
+				<div class="book-items comlay">
+					<div class="book" v-for='book in booklist'>
+						<div class="cover">
+							<img :src="book.image">
+						</div>
+						<div class="info">
+							<div class="inwraper">
+								<span>作者：{{book.author}}</span>
+								<span>分类: {{book.category}}</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -63,21 +67,29 @@ import img5 from '../../../static/images/5.jpg'
 	.section
 		margin-top: 160px
 		.book-list
-			display:flex
-			div
-				flex-direction:row
+			padding:10px
+			.heading
+				display:flex
 				justify-content:space-between
-		.book-items
-			.book
-				display: flex
-				.cover
-					img
-						width:80px
-						height: 100px 
-				div
-					flex-direction: row
-				.info
-					text-align:center
-					font-size: 12px
-						
+				flex-direction row
+			.book-items
+				display flex
+				flex-direction row
+				flex-wrap wrap
+				.book
+					display flex
+					&:nth-child(odd)
+						width 49%
+						margin-left 4px
+					&:nth-child(even)
+						width 49%
+						margin-left 3px
+					.cover
+						img
+							width:80px
+							height: 100px 
+					.info
+						padding-left 10px
+						font-size: 12px
+						line-height 20px
 </style>
