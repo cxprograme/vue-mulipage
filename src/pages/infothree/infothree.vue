@@ -1,12 +1,25 @@
 <template>
   <div class="">
-    infothree
+    {{totalPrice}}
+    <banana></banana>
+    <apple></apple>
   </div>
 </template>
 
 <script>
+import Banana from '@/components/banana/Banana'
+import Apple from '@/components/apple/Apple'
 export default {
-  name: 'infothree'
+  name: 'infothree',
+  components:{
+  	banana:Banana, 
+  	apple:Apple
+  },
+  computed:{
+  	totalPrice:function(){
+  		return this.$store.state.totalPrice
+  	}
+  }
 }
 </script>
 
