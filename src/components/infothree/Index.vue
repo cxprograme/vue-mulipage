@@ -5,8 +5,10 @@
 				<h2>全部产品</h2>
 				<template v-for='product in productList'>
 					<h3>{{product.title}}</h3>
-					<ul v-for="item in product.list">
-						<a :href="item.url">{{item.name}}</a>
+					<ul>
+						<li v-for="item in product.list">
+							<a :href="item.url">{{item.name}}</a>
+						</li>
 					</ul>
 				</template>
 			</div>
@@ -14,8 +16,10 @@
 				<h2>最新消息</h2>
 				<template v-for='product in newList'>
 					<h3>{{product.title}}</h3>
-					<ul v-for='item in product.list'>
-						<a :href="item.url">{{item.name}}</a>
+					<ul>
+						<li v-for="item in product.list">
+							<a :href="item.url">{{item.name}}</a>
+						</li>
 					</ul>
 				</template>
 			</div>
@@ -83,4 +87,27 @@
 	.index-wrap
 		width 1200px
 		margin 0 auto
+		padding-top 10px
+		.index-left
+			.index-left-block
+				width 200px
+				background-color #fff
+				h2
+					box-sizing border-box
+					width 100%
+					height 40px
+					line-height 40px
+					background-color #66CDAA
+					font-size 16px
+					font-weight 400px
+					border-radius 5px
+					padding-left 10px
+				h3
+					padding: 0 15px 5px 15px;
+					font-weight: bold;
+					color: #222;
+				ul
+					padding:10px 15px
+					li
+						padding 5px
 </style>
