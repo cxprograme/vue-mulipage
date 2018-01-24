@@ -25,6 +25,20 @@ var intro = appData.intro
 var apiRouter = express.Router()
 app.use('/api', apiRouter)
 
+
+//json-server 模拟数据
+const jsonServer = require('json-server');
+const apiServer = jsonServer.create();
+const apiRt = jsonServer.router(path.join(__dirname,'db.json'));
+const middlewares = jsonServer.defaults();
+
+apiServer.use(middlewares);
+apiServer.use(apiRt);
+apiServer.listen(8081, () =>{
+  console.log("json server is running");
+})
+
+
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
