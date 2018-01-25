@@ -12,10 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
         //映射api  20180123
-        '/api/':{
-            target: 'http://localhost:8081',
-            changeOrigin: false,
-        }
+        '/api/': 'http://localhost:8081',
+
     },
 
     // Various Dev Server settings

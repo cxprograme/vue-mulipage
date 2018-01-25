@@ -14,14 +14,11 @@
 			</div>
 			<div class="index-left-block lastest-news">
 				<h2>最新消息</h2>
-				<template v-for='product in newList'>
-					<h3>{{product.title}}</h3>
-					<ul>
-						<li v-for="item in product.list">
-							<a :href="item.url">{{item.name}}</a>
+				<ul>
+						<li v-for="item in newList">
+							<a :href="item.url">{{item.title}}</a>
 						</li>
-					</ul>
-				</template>
+				</ul>
 			</div>
 		</div>
 		<div class="index-right"></div>
@@ -83,12 +80,22 @@ export default {
 			newList:[]
 		}
 	},
-	create:function() {
+	mounted: function(){
+		this.$http.get('/api/getNewsList').then(response => {
+			console.log('111');
+			console.log(JSON.stringify(response));
+			this.newList = response.body;
+		})
+	}
+	/*mouthed:function() {
+		this.$http.get('/api/getNewsList').then(response => {
+			console.log('111');
+		})
 		fetch ('/api/getNewsList').then(response => {
 		  console.log('111');
           this.newList = response
       })
-	}
+	}*/
 }
 </script>
 <style lang="stylus" type='stylus' rel="stylesheet/stylus" scoped>

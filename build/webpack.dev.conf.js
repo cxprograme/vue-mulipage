@@ -33,7 +33,7 @@ const apiRt = jsonServer.router(path.join(__dirname,'db.json'));
 const middlewares = jsonServer.defaults();
 
 apiServer.use(middlewares);
-apiServer.use(apiRt);
+apiServer.use('/api',apiRt);
 apiServer.listen(8081, () =>{
   console.log("json server is running");
 })

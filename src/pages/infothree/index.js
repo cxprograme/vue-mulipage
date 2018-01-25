@@ -81,7 +81,7 @@ let store = new Vuex.Store({
 Vue.use(VueRouter);
 Vue.use(VueResource);
 const routes = [
-  { path: '/index', component: IndexPage }
+  { path: '/infothree/index', component: IndexPage }
 ];
 
 // 3. 创建 router 实例，然后传 `routes` 配置
@@ -102,4 +102,4 @@ const app = new Vue({
   }
 }).$mount('#infothree');
 
-router.push('/index')
+router.push('/infothree/index')
