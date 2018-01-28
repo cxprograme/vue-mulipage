@@ -21,7 +21,19 @@
 				</ul>
 			</div>
 		</div>
-		<div class="index-right"></div>
+		<div class="index-right">
+			<div class="index-borad-list">
+				<div class="index-borad-item" v-for="item in boardList">
+					<div class="index-board-item-inner">
+						<h2>{{item.title}}</h2>
+						<p>{{item.description}}</p>
+						<div class="index-board-button">
+							<a href="" class="button">立即购买</a>
+            			</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 <script >
@@ -77,7 +89,33 @@ export default {
 					]
 				}
 			},
-			newList:[]
+			newList:[],
+			boardList: [
+					{
+						title : '开放产品',
+						description: '开放产品是一款开放产品',
+						id: 'car',
+						saleout: false
+					},
+					{
+						title: '品牌营销',
+						description: '品牌营销帮助你的产品更好地找到定位',
+						id: '',
+						saleout: false
+					},
+					{
+						title: '使命必达',
+						description: '使命必达快速迭代永远保持最前端的速度',
+						id:'',
+						saleout: false
+					},
+					{
+						title: '勇攀高峰',
+						description: '帮你勇闯高峰，到达事业的顶峰',
+						id: '',
+						saleout: false
+					}
+				]
 		}
 	},
 	mounted: function(){
@@ -103,7 +141,12 @@ export default {
 		width 1200px
 		margin 0 auto
 		padding-top 10px
+		overflow hidden
+		display flex
+		flex-direction row
+		justify-content space-between
 		.index-left
+			// float left
 			.index-left-block
 				width 200px
 				background-color #fff
@@ -125,4 +168,24 @@ export default {
 					padding:10px 15px
 					li
 						padding 5px
+		.index-right
+			// float left
+			// margin-left 20px
+			// margin-top 500px
+			.index-borad-list
+				overflow: hidden;
+				display: flex
+				flex-direction row
+				flex-wrap wrap
+				justify-content flex-end
+				.index-borad-item
+					width: 400px;
+					background: #fff;
+					box-shadow: 0 0 1px #ddd;
+					padding: 20px;
+					margin-right: 20px;
+					margin-bottom: 20px;
+					.index-board-item-inner
+						min-height: 125px;
+						padding-left: 120px;
 </style>
