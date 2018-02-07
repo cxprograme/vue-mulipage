@@ -22,7 +22,8 @@
 			</div>
 		</div>
 		<div class="index-right">
-			<div class="index-borad-list">
+			<slider class='rightcommon' :slider="sliders"></slider>
+			<div class="rightcommon index-borad-list">
 				<div class="index-borad-item" v-for="(item,index) in boardList" :class="['index-board-'+item.id]">
 					<div class="index-board-item-inner">
 						<h2>{{item.title}}</h2>
@@ -38,10 +39,36 @@
 </template>
 <script >
 import {fetch} from '@/util/http'
+import slider from '@/components/sliderbanner/sliderbanner'
 export default {
 	name: 'index',
+	components:{
+		slider:slider
+	},
 	data() {
 		return {
+			sliders: [
+		        {
+		          src: require('@/assets/slideShow/pic1.jpg'),
+		          title: 'xxx1',
+		          href: 'detail/analysis'
+		        },
+		        {
+		          src: require('@/assets/slideShow/pic2.jpg'),
+		          title: 'xxx2',
+		          href: 'detail/count'
+		        },
+		        {
+		          src: require('@/assets/slideShow/pic3.jpg'),
+		          title: 'xxx3',
+		          href: 'http://xxx.xxx.com'
+		        },
+		        {
+		          src: require('@/assets/slideShow/pic4.jpg'),
+		          title: 'xxx4',
+		          href: 'detail/forecast'
+		        }
+		    ],
 			productList:{
 				pc:{
 					title:'PC产品',
@@ -172,6 +199,8 @@ export default {
 			// float left
 			// margin-left 20px
 			// margin-top 500px
+			display flex
+			flex-direction column
 			.index-borad-list
 				overflow: hidden;
 				display: flex
