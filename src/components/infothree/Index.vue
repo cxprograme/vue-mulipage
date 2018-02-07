@@ -23,7 +23,7 @@
 		</div>
 		<div class="index-right">
 			<div class="index-borad-list">
-				<div class="index-borad-item" v-for="item in boardList">
+				<div class="index-borad-item" v-for="(item,index) in boardList" :class="['index-board-'+item.id]">
 					<div class="index-board-item-inner">
 						<h2>{{item.title}}</h2>
 						<p>{{item.description}}</p>
@@ -100,19 +100,19 @@ export default {
 					{
 						title: '品牌营销',
 						description: '品牌营销帮助你的产品更好地找到定位',
-						id: '',
+						id: 'earth',
 						saleout: false
 					},
 					{
 						title: '使命必达',
 						description: '使命必达快速迭代永远保持最前端的速度',
-						id:'',
+						id:'loud',
 						saleout: false
 					},
 					{
 						title: '勇攀高峰',
 						description: '帮你勇闯高峰，到达事业的顶峰',
-						id: '',
+						id: 'hill',
 						saleout: false
 					}
 				]
@@ -188,4 +188,16 @@ export default {
 					.index-board-item-inner
 						min-height: 125px;
 						padding-left: 120px;
+				.index-board-car
+					.index-board-item-inner
+						background url(../../assets/images/1.png) no-repeat
+				.index-board-loud
+					.index-board-item-inner
+						background url(../../assets/images/2.png) no-repeat
+				.index-board-earth
+					.index-board-item-inner
+						background url(../../assets/images/3.png) no-repeat
+				.index-board-hill
+					.index-board-item-inner
+						background url(../../assets/images/4.png) no-repeat
 </style>
