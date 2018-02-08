@@ -22,7 +22,7 @@
 			</div>
 		</div>
 		<div class="index-right">
-			<slider class='rightcommon' :slider="sliders"></slider>
+			<slider class='rightcommon' :slides="sliders"></slider>
 			<div class="rightcommon index-borad-list">
 				<div class="index-borad-item" v-for="(item,index) in boardList" :class="['index-board-'+item.id]">
 					<div class="index-board-item-inner">
