@@ -129,7 +129,7 @@ export default {
 				padding: 0 10px;
 				cursor: pointer;
 				color: #fff;
-				font-size: 20px
+				font-size:14px
 				.on
 					text-decoration: underline;
 </style>
