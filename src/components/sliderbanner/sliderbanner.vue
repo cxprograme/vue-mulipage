@@ -81,21 +81,26 @@ export default {
   }
 }
 </script>
-
 <style scoped lang="stylus" type='stylus' rel="stylesheet/stylus">
-.slide-trans-enter-active
-	transition: all .5s;
-.slide-trans-enter
-	transform: translateX(900px);
-.slide-trans-old-leave-active
-	transition: all .5s;
-	transform: translateX(-900px);
 .slide-show
 	position: relative;
 	margin: 15px 15px 15px 0;
 	width: 900px;
 	height: 500px;
 	overflow: hidden;
+	.slide-img
+		width: 100%;
+		.slide-trans-enter-active
+			transition: all .5s;
+		.slide-trans-enter
+			transform: translateX(900px);
+		.slide-trans-old-leave-active
+			transition: all .5s;
+			transform: translateX(-900px);
+		img
+			width: 100%;
+			position: absolute;
+			top: 0;
 	h2
 		position: absolute;
 		width: 100%;

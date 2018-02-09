@@ -85,13 +85,18 @@
 		height: 500px;
 		overflow: hidden;
 		.slider-img
+			// width 100%
 			.slider-trans-enter-active
 				transition all 2s
 			.slider-trans-enter
 				transform translateX(900px)
 			.slider-trans-old-leave-active
 				transition: all 2s
-  				transform: translateX(-900px)
+				transform: translateX(-900px)
+			img
+				width 100%
+				position absolute
+				top 0
 		h2
 			position: absolute
 			bottom 0px

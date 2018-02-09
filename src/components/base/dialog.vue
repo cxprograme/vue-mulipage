@@ -1,0 +1,59 @@
+<template>
+	<div>
+		<div class="dialog-wrap" v-if="isShow">
+			<div class="dialog-cover" @click="closeMyself" v-if="isShow"></div>
+			<div class="dialog-content">
+				<p class="dialog-close"></p>
+				<p>hello</p>
+			</div>
+		</div>
+	</div>
+</template>
+<script >
+	export default{
+		props:{
+			isShow:{
+				type:Boolean,
+				default:false
+			}
+		},
+		data() {
+			return {
+
+			}
+		},
+		methods:{
+			closeMyself:function(){
+				this.$emit('on-close');
+			}
+		}
+	}
+</script>
+<style lang="stylus" type='stylus' rel="stylesheet/stylus" scoped>
+.dialog-wrap
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	.dialog-cover
+		position: fixed;
+		z-index: 5;
+		top: 0
+		left: 0
+		width: 100%;
+		height: 100%;
+		background-color: #eee
+		opacity:.5
+	.dialog-content
+		width: 50%;
+		position: fixed;
+		top:20%
+		left: 50%
+		max-height: 50%;
+		overflow: auto;
+		background: #fff;
+		margin-left: -25%;
+		z-index: 10;
+		border: 2px solid #464068;
+		padding: 2%;
+		line-height: 1.6;
+</style>
