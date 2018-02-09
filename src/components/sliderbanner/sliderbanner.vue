@@ -123,7 +123,7 @@ export default {
 	.slide-pages
 			position: absolute;
 			bottom: 10px;
-			right: 14px;
+			right: 16px;
 			li
 				display: inline-block;
 				padding: 0 10px;
