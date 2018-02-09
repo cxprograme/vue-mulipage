@@ -4,7 +4,7 @@
     <banana></banana>
     <apple></apple>
   </div> -->
-  <!-- <layout></layout>  -->
+  <layout></layout> 
 </template>
 
 <script>

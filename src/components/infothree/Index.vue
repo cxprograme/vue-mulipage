@@ -22,7 +22,8 @@
 			</div>
 		</div>
 		<div class="index-right">
-			<slider class='rightcommon' :slides="sliders"></slider>
+			<!-- <slider class='rightcommon' :slides="sliders"></slider> -->
+			<slidertwo class='rightcommon' :slider="sliders"></slidertwo>
 			<div class="rightcommon index-borad-list">
 				<div class="index-borad-item" v-for="(item,index) in boardList" :class="['index-board-'+item.id]">
 					<div class="index-board-item-inner">
@@ -35,15 +36,20 @@
 				</div>
 			</div>
 		</div>
+	<!-- <mydialog></mydialog> -->
 	</div>
 </template>
 <script >
 import {fetch} from '@/util/http'
 import slider from '@/components/sliderbanner/sliderbanner'
+import slidertwo from '@/components/slidetwo/slidertwo'
+import dialog from '@/components/base/dialog' 
 export default {
 	name: 'index',
 	components:{
-		slider:slider
+		slider:slider,
+		slidertwo:slidertwo,
+		mydialog:dialog
 	},
 	data() {
 		return {

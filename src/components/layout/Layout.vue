@@ -14,7 +14,7 @@
 						<li>|</li>
 						<li v-if="username ===''" @click='register'>注册</li>
 						<li>|</li>
-						<li @click='about'>关于</li>
+						<li @click='aboutClick'>关于</li>
 					</ul>
 				</div>
 			</div>
@@ -23,14 +23,20 @@
 		<div class="app-footer">
 			<p>@ cxpro </p>
 		</div>
+		<mydialog :is-show="isShowDialog" @on-close='closeDialog'></mydialog>
 	</div>
 </template>
 <script>
+	import dialog from '@/components/base/dialog'
 	export default {
 		name: 'layout',
+		components:{
+			mydialog:dialog
+		},
 		data() {
 			return {
-				username:''
+				username:'',
+				isShowDialog:false
 			}
 		},
 		methods: {
@@ -43,8 +49,11 @@
 			register: function(){
 
 			},
-			about: function(){
-
+			aboutClick: function(){
+				this.isShowDialog = true
+			},
+			closeDialog:function(){
+				this.isShowDialog = false
 			}
 		}
 	}
