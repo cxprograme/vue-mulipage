@@ -23,7 +23,9 @@
 		<div class="app-footer">
 			<p>@ cxpro </p>
 		</div>
-		<mydialog :is-show="isShowDialog" @on-close='closeDialog'></mydialog>
+		<mydialog :is-show="isShowDialog" @on-close='closeDialog'>
+			<p>Login</p>
+		</mydialog>
 	</div>
 </template>
 <script>
@@ -44,10 +46,10 @@
 
 			},
 			login: function(){
-
+				this.isShowDialog = true;
 			},
 			register: function(){
-
+				this.isShowDialog = true;
 			},
 			aboutClick: function(){
 				this.isShowDialog = true
@@ -126,6 +128,7 @@ body
 				li
 					color #fff
 					margin-left 2px
+					cursor pointer
 	.container
 		width 1200px
 		margin 0 auto
