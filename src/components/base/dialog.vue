@@ -4,7 +4,7 @@
 			<div class="dialog-cover" @click="closeMyself" v-if="isShow"></div>
 			<div class="dialog-content">
 				<p class="dialog-close"></p>
-				<p>hello</p>
+				<slot>empty</slot>
 			</div>
 		</div>
 	</div>
@@ -56,4 +56,27 @@
 		border: 2px solid #464068;
 		padding: 2%;
 		line-height: 1.6;
+		.dialog-close
+			position absolute
+			top 3%
+			right 3%
+			width:0.1em;
+			height:1em;
+			background: #333;
+			-webkit-transform: rotate(45deg);
+			-moz-transform: rotate(45deg);
+			-o-transform: rotate(45deg);
+			-ms-transform: rotate(45deg);
+			transform: rotate(45deg);
+			display: inline-block;
+			&:after
+				content ''
+				position:absolute
+				right 3%
+				top 2%
+				width .1em
+				height 1em
+				background #333
+				-webkit-transform rotate(270deg)
+				transform rotate(270deg)
 </style>
