@@ -84,7 +84,6 @@ export default {
 <style scoped lang="stylus" type='stylus' rel="stylesheet/stylus">
 .slide-show
 	position: relative;
-	margin: 15px 15px 15px 0;
 	width: 900px;
 	height: 500px;
 	overflow: hidden;

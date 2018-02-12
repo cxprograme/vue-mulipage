@@ -23,8 +23,8 @@
 		</div>
 		<div class="index-right">
 			<!-- <slider class='rightcommon' :slides="sliders"></slider> -->
-			<slidertwo class='rightcommon' :slider="sliders"></slidertwo>
-			<div class="rightcommon index-borad-list">
+			<slider class='rightcommon' :slides="sliders"></slider>
+			<div class="index-borad-list">
 				<div class="index-borad-item" v-for="(item,index) in boardList" :class="['index-board-'+item.id]">
 					<div class="index-board-item-inner">
 						<h2>{{item.title}}</h2>
@@ -207,6 +207,9 @@ export default {
 			// margin-top 500px
 			display flex
 			flex-direction column
+			.rightcommon
+				margin-left: 80px;
+				margin-bottom: 20px;
 			.index-borad-list
 				overflow: hidden;
 				display: flex
