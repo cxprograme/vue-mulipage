@@ -22,8 +22,8 @@
     }
   ],
   "login": {
-    "username": "yudongdong",
-    "userId": 123123
+    "username": "cx@123",
+    "password": 123
   },
   "getPrice": {
     "amount": 678

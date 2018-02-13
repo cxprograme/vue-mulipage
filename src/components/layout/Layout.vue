@@ -23,39 +23,56 @@
 		<div class="app-footer">
 			<p>@ cxpro </p>
 		</div>
-		<mydialog :is-show="isShowDialog" @on-close='closeDialog'>
-			<p>Login</p>
+		<mydialog :is-show="isShowDialogLogin" @on-close='closeDialog("isShowDialogLogin")'>
+			<login-form @has-log='onSuccessLog'></login-form>
+		</mydialog>
+		<mydialog :is-show="isShowDialogRegister" @on-close='closeDialog("isShowDialogRegister")'>
+			<p>Register</p>
+		</mydialog>
+		<mydialog :is-show="isShowDialogAbout" @on-close='closeDialog("isShowDialogAbout")'>
+			<p>本报告在调研数据的基础上，采用定性与定量相结合的方式深入分析了专车市场发展的驱动因素与阻碍因素、专车市场背后的产业格局、专车企业的竞争格局、用户对专车市场的依赖程度、专车对其他交通工具运力的补充效应等，通过这五个章节的研究反映专车市场的发展态势和面临的问题。报告力求客观、深入、准确地反映中国专车市场发展情况，为政府、企事业单位和社会各界提供决策依据。 </p>
 		</mydialog>
 	</div>
 </template>
 <script>
 	import dialog from '@/components/base/dialog'
+	import loginForm from '@/components/loginform/LoginForm'
 	export default {
 		name: 'layout',
 		components:{
-			mydialog:dialog
+			mydialog:dialog,
+			loginForm:loginForm
 		},
 		data() {
 			return {
 				username:'',
-				isShowDialog:false
+				isShowDialogLogin:false,
+				isShowDialogRegister: false,
+				isShowDialogAbout:false
 			}
 		},
 		methods: {
 			quit: function(){
-
+				this.username = '';
 			},
 			login: function(){
-				this.isShowDialog = true;
+				this.isShowDialogLogin = true;
 			},
 			register: function(){
-				this.isShowDialog = true;
+				this.isShowDialogRegister = true;
 			},
 			aboutClick: function(){
-				this.isShowDialog = true
+				this.isShowDialogAbout = true
 			},
-			closeDialog:function(){
-				this.isShowDialog = false
+			closeDialog:function(arg){
+				this[arg] = false
+			},
+			onSuccessLog:function(data){
+				console.log(data);
+				if(data.username){
+					this.username = data.username
+					this.closeDialog('isShowDialogLogin');
+				}
 			}
 		}
 	}

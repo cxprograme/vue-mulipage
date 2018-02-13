@@ -5,6 +5,7 @@ import Layout from '@/components/layout/Layout'
 import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import IndexPage from '@/components/infothree/Index'
+import Detail from '@/components/infothree/detail'
 
 Vue.use(VueRouter)
 Vue.config.productionTip = false
@@ -81,7 +82,8 @@ let store = new Vuex.Store({
 Vue.use(VueRouter);
 Vue.use(VueResource);
 const routes = [
-  { path: '/infothree/index', component: IndexPage }
+  { path: '/infothree/index', component: IndexPage },
+  { path: '/infothree/detail', component: Detail}
 ];
 
 // 3. 创建 router 实例，然后传 `routes` 配置
@@ -102,4 +104,4 @@ const app = new Vue({
   }
 }).$mount('#infothree');
 
-router.push('/infothree/index')
+// router.push('/infothree/detail')

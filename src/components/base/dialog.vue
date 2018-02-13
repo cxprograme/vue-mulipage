@@ -1,11 +1,13 @@
 <template>
 	<div>
-		<div class="dialog-wrap" v-if="isShow">
+		<div class="dialog-wrap">
 			<div class="dialog-cover" @click="closeMyself" v-if="isShow"></div>
-			<div class="dialog-content">
-				<p class="dialog-close"></p>
-				<slot>empty</slot>
-			</div>
+			<transition name='drop'>
+				<div class="dialog-content" v-if="isShow">
+					<p class="dialog-close" @click="closeMyself">x</p>
+					<slot>empty</slot>
+				</div>
+			</transition>
 		</div>
 	</div>
 </template>
@@ -30,6 +32,13 @@
 	}
 </script>
 <style lang="stylus" type='stylus' rel="stylesheet/stylus" scoped>
+.drop-enter-active
+	transition all .5s ease
+.drop-enter
+	transform translateY(-500px)
+.drop-leave-active
+	transform translateY(-500px)
+	transition all .3s ease
 .dialog-wrap
 	position: fixed;
 	width: 100%;
@@ -58,25 +67,10 @@
 		line-height: 1.6;
 		.dialog-close
 			position absolute
-			top 3%
-			right 3%
-			width:0.1em;
-			height:1em;
-			background: #333;
-			-webkit-transform: rotate(45deg);
-			-moz-transform: rotate(45deg);
-			-o-transform: rotate(45deg);
-			-ms-transform: rotate(45deg);
-			transform: rotate(45deg);
-			display: inline-block;
-			&:after
-				content ''
-				position:absolute
-				right 3%
-				top 2%
-				width .1em
-				height 1em
-				background #333
-				-webkit-transform rotate(270deg)
-				transform rotate(270deg)
+			top 2px
+			right 2px
+			width 20px
+			height 20px
+			text-align center
+			cursor pointer
 </style>
