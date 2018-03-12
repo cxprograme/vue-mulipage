@@ -34,7 +34,7 @@ const middlewares = jsonServer.defaults();
 
 apiServer.use(middlewares);
 apiServer.use('/api',apiRt);
-apiServer.listen(8081, () =>{
+apiServer.listen(3333, () =>{
   console.log("json server is running");
 })
 
@@ -53,7 +53,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       rewrites: [
         { from: /infoone/, to: path.posix.join(config.dev.assetsPublicPath, '/infoone.html') },
         { from: /infotwo/, to: path.posix.join(config.dev.assetsPublicPath, '/infotwo.html') },
-        { from: /infothree/, to: path.posix.join(config.dev.assetsPublicPath, '/infothree.html') }
+        { from: /infothree/, to: path.posix.join(config.dev.assetsPublicPath, '/infothree.html')},
+        { from: /infofour/, to: path.posix.join(config.dev.assetsPublicPath, '/infofour.html')}
       ],
     },
     hot: true,

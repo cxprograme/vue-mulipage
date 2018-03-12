@@ -7,7 +7,7 @@ const entriesother = utils.getEntry('./src/pages/**/index.js');
 const entries = Object.assign({
   // app: './src/main.js'
 }, entriesother);
-console.log(entries);
+console.log("entries:"+JSON.stringify(entries));
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
