@@ -10,39 +10,23 @@
 		<span>作者：{{intro.author}}</span>
 		<span>分类: {{intro.category}}</span> -->
 		<banner></banner>
-		<div class="section">
-			<div class="book-list">
-				<div class="heading comlay">
-					<div class="header">新书上架</div>
-					<div class="more">更多</div>
-				</div>
-				<div class="book-items comlay">
-					<div class="book" v-for='book in booklist'>
-						<div class="cover">
-							<img :src="book.image">
-						</div>
-						<div class="info">
-							<div class="inwraper">
-								<span>作者：{{book.author}}</span>
-								<span>分类: {{book.category}}</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		<booklist :blist = 'booklist' :header='header[0]'></booklist>
+		<booklist :blist = 'booklist' :header='header[1]'></booklist>
+		<booklist :blist = 'booklist' :header='header[2]'></booklist>
 	</div>
 </template>
 
 <script>
 import Banner from '@/components/banner/Banner'
 import img5 from '../../../static/images/5.jpg'
+import booklist from '@/components/booklist/BookList'
 	export default{
 		name: 'home',
 		data() {
 			return{
 				img5:img5,
-				booklist:[]
+				booklist:[],
+				header:['强推','玄幻','修仙','武侠']
 			}
 				
 		},
@@ -58,13 +42,14 @@ import img5 from '../../../static/images/5.jpg'
 			console.log('booklist:'+this.booklist);
 		},
 		components:{
-			banner:Banner
+			banner:Banner,
+			booklist:booklist
 		}
 	};
 </script>
 
 <style lang="stylus" type='stylus' rel="stylesheet/stylus" scoped>
-	.section
+/*	.section
 		margin-top: 160px
 		.book-list
 			padding:10px
@@ -91,5 +76,5 @@ import img5 from '../../../static/images/5.jpg'
 					.info
 						padding-left 10px
 						font-size: 12px
-						line-height 20px
+						line-height 20px*/
 </style>
